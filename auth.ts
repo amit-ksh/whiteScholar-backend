@@ -9,6 +9,8 @@ For more on auth, check out: https://keystonejs.com/docs/apis/auth#authenticatio
 
 import { createAuth } from '@keystone-6/auth';
 
+import 'dotenv/config';
+
 // See https://keystonejs.com/docs/apis/session#session-api for the session docs
 import { statelessSessions } from '@keystone-6/core/session';
 
