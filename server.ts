@@ -30,4 +30,8 @@ export const server: ServerConfig<BaseKeystoneTypeInfo> = {
     );
     app.get('/rest/jobs', getJobs);
   },
+  cors: {
+    origin: ['http://localhost:3000', 'http://localhost:3001'],
+    credentials: true,
+  },
 };
