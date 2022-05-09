@@ -118,6 +118,55 @@ input AdminCreateInput {
   password: String
 }
 
+type User {
+  id: ID!
+  createdAt: DateTime
+  name: String
+  email: String
+  password: PasswordState
+}
+
+input UserWhereUniqueInput {
+  id: ID
+  email: String
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+  id: IDFilter
+  createdAt: DateTimeFilter
+  name: StringFilter
+  email: StringFilter
+}
+
+input UserOrderByInput {
+  id: OrderDirection
+  createdAt: OrderDirection
+  name: OrderDirection
+  email: OrderDirection
+}
+
+input UserUpdateInput {
+  createdAt: DateTime
+  name: String
+  email: String
+  password: String
+}
+
+input UserUpdateArgs {
+  where: UserWhereUniqueInput!
+  data: UserUpdateInput!
+}
+
+input UserCreateInput {
+  createdAt: DateTime
+  name: String
+  email: String
+  password: String
+}
+
 type Job {
   id: ID!
   createdAt: DateTime
@@ -193,6 +242,12 @@ type Mutation {
   updateAdmins(data: [AdminUpdateArgs!]!): [Admin]
   deleteAdmin(where: AdminWhereUniqueInput!): Admin
   deleteAdmins(where: [AdminWhereUniqueInput!]!): [Admin]
+  createUser(data: UserCreateInput!): User
+  createUsers(data: [UserCreateInput!]!): [User]
+  updateUser(where: UserWhereUniqueInput!, data: UserUpdateInput!): User
+  updateUsers(data: [UserUpdateArgs!]!): [User]
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteUsers(where: [UserWhereUniqueInput!]!): [User]
   createJob(data: JobCreateInput!): Job
   createJobs(data: [JobCreateInput!]!): [Job]
   updateJob(where: JobWhereUniqueInput!, data: JobUpdateInput!): Job
@@ -237,6 +292,14 @@ type Query {
   ): [Admin!]
   admin(where: AdminWhereUniqueInput!): Admin
   adminsCount(where: AdminWhereInput! = {}): Int
+  users(
+    where: UserWhereInput! = {}
+    orderBy: [UserOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [User!]
+  user(where: UserWhereUniqueInput!): User
+  usersCount(where: UserWhereInput! = {}): Int
   jobs(
     where: JobWhereInput! = {}
     orderBy: [JobOrderByInput!]! = []

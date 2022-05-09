@@ -4,8 +4,11 @@ import type {
   CreateRequestContext,
   ServerConfig,
 } from '@keystone-6/core/types';
+import express from 'express';
 
 import { getJobs } from './routes/job';
+import { createUser } from './routes/signup';
+const upload = require('multer')();
 
 export const server: ServerConfig<BaseKeystoneTypeInfo> = {
   /*
@@ -21,6 +24,13 @@ export const server: ServerConfig<BaseKeystoneTypeInfo> = {
     app: Express,
     createContext: CreateRequestContext<BaseKeystoneTypeInfo>
   ) => {
+    app.use(upload.any());
+    app.use(express.json());
+    app.use(
+      express.urlencoded({
+        extended: true,
+      })
+    );
     app.use(
       '/rest',
       async (req: Request, res: Response, next: NextFunction) => {
@@ -28,7 +38,9 @@ export const server: ServerConfig<BaseKeystoneTypeInfo> = {
         next();
       }
     );
+
     app.get('/rest/jobs', getJobs);
+    app.post('/rest/user', createUser);
   },
   cors: {
     origin: ['http://localhost:3000', 'http://localhost:3001'],
