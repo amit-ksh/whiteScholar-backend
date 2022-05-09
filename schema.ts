@@ -22,7 +22,7 @@ A field: The individual bits of data on your list, each with its own type.
 // that Typescript cannot easily infer.
 import { Lists } from '.keystone/types';
 
-import { User } from './schemas/userSchema';
+import { Admin } from './schemas/userSchema';
 import { Job } from './schemas/jobSchema';
 
 // We have a users list, a blogs list, and tags for blog posts, so they can be filtered.
@@ -30,6 +30,6 @@ import { Job } from './schemas/jobSchema';
 // with the value being the definition of the list, including the fields.
 export const lists: Lists = {
   // Here we define the user list.
-  User,
+  Admin,
   Job,
 };

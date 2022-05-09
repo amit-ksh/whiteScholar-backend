@@ -32,7 +32,7 @@ if (!sessionSecret) {
 // What we are saying here is that we want to use the list `User`, and to log in
 // we will need their email and password.
 const { withAuth } = createAuth({
-  listKey: 'User',
+  listKey: 'Admin',
   identityField: 'email',
   sessionData: 'name',
   secretField: 'password',
