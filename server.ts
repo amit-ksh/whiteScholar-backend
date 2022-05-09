@@ -5,10 +5,12 @@ import type {
   ServerConfig,
 } from '@keystone-6/core/types';
 import express from 'express';
+import multer from 'multer';
 
 import { getJobs } from './routes/job';
-import { createUser } from './routes/signup';
-const upload = require('multer')();
+import { signup } from './routes/signup';
+import { signin } from './routes/signin';
+const upload = multer();
 
 export const server: ServerConfig<BaseKeystoneTypeInfo> = {
   /*
@@ -39,8 +41,9 @@ export const server: ServerConfig<BaseKeystoneTypeInfo> = {
       }
     );
 
+    app.post('/rest/signup', signup);
+    app.post('/rest/signin', signin);
     app.get('/rest/jobs', getJobs);
-    app.post('/rest/user', createUser);
   },
   cors: {
     origin: ['http://localhost:3000', 'http://localhost:3001'],

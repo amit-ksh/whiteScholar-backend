@@ -16,6 +16,6 @@ export const User: any = list({
       isFilterable: true,
     }),
     // The password field takes care of hiding details and hashing values
-    password: password({ validation: { isRequired: true } }),
+    password: text({ validation: { isRequired: true } }),
   },
 });

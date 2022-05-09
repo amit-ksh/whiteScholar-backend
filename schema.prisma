@@ -24,7 +24,7 @@ model User {
   createdAt DateTime @default(now())
   name      String   @default("")
   email     String   @unique @default("")
-  password  String
+  password  String   @default("")
 }
 
 model Job {

@@ -1,8 +1,9 @@
 import type { Request, Response } from 'express';
 import type { KeystoneContext } from '@keystone-6/core/types';
-const bcrypt = require('bcrypt');
 
-export async function createUser(req: Request, res: Response) {
+import bcrypt from 'bcrypt';
+
+export async function signup(req: Request, res: Response) {
   // This was added by the context middleware in ../keystone.ts
   const context = (req as any).context as KeystoneContext;
 
@@ -17,7 +18,7 @@ export async function createUser(req: Request, res: Response) {
     });
 
     if (user) {
-      return res.status(200).json({ error: 'User already exists!' });
+      return res.status(401).json({ error: 'User already exists!' });
     } else {
       const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -35,7 +36,7 @@ export async function createUser(req: Request, res: Response) {
           msg: 'User created!',
         });
       } else {
-        return res.status(200).json({
+        return res.status(401).json({
           error: 'User not created. Try Again!',
         });
       }

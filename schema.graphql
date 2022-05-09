@@ -123,7 +123,7 @@ type User {
   createdAt: DateTime
   name: String
   email: String
-  password: PasswordState
+  password: String
 }
 
 input UserWhereUniqueInput {
@@ -139,6 +139,7 @@ input UserWhereInput {
   createdAt: DateTimeFilter
   name: StringFilter
   email: StringFilter
+  password: StringFilter
 }
 
 input UserOrderByInput {
@@ -146,6 +147,7 @@ input UserOrderByInput {
   createdAt: OrderDirection
   name: OrderDirection
   email: OrderDirection
+  password: OrderDirection
 }
 
 input UserUpdateInput {
