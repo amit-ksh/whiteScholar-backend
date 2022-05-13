@@ -29,10 +29,17 @@ model User {
 
 model Job {
   id          String   @id @default(cuid())
-  createdAt   DateTime @default(now())
   title       String   @default("")
   companyName String   @default("")
   location    String   @default("")
   url         String   @default("")
-  postedDate  DateTime
+  postedDate  DateTime @default(now())
+}
+
+model ResumeTemplate {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  name        String   @default("")
+  description String   @default("")
+  path        String   @default("")
 }

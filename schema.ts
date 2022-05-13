@@ -25,6 +25,7 @@ import { Lists } from '.keystone/types';
 import { Admin } from './schemas/adminSchema';
 import { Job } from './schemas/jobSchema';
 import { User } from './schemas/userScema';
+import { ResumeTemplate } from './schemas/resumeSchema';
 
 // We have a users list, a blogs list, and tags for blog posts, so they can be filtered.
 // Each property on the exported object will become the name of a list (a.k.a. the `listKey`),
@@ -34,4 +35,5 @@ export const lists: Lists = {
   Admin,
   User,
   Job,
+  ResumeTemplate,
 };

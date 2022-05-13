@@ -3,10 +3,6 @@ import { text, timestamp } from '@keystone-6/core/fields';
 
 export const Job = list({
   fields: {
-    createdAt: timestamp({
-      validation: { isRequired: true },
-      defaultValue: { kind: 'now' },
-    }),
     title: text({ validation: { isRequired: true } }),
     companyName: text({
       validation: { isRequired: true },
@@ -14,6 +10,9 @@ export const Job = list({
     }),
     location: text({ validation: { isRequired: true } }),
     url: text({ validation: { isRequired: true } }),
-    postedDate: timestamp({ validation: { isRequired: true } }),
+    postedDate: timestamp({
+      validation: { isRequired: true },
+      defaultValue: { kind: 'now' },
+    }),
   },
 });

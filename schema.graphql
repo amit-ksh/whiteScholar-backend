@@ -171,7 +171,6 @@ input UserCreateInput {
 
 type Job {
   id: ID!
-  createdAt: DateTime
   title: String
   companyName: String
   location: String
@@ -188,7 +187,6 @@ input JobWhereInput {
   OR: [JobWhereInput!]
   NOT: [JobWhereInput!]
   id: IDFilter
-  createdAt: DateTimeFilter
   title: StringFilter
   companyName: StringFilter
   location: StringFilter
@@ -198,7 +196,6 @@ input JobWhereInput {
 
 input JobOrderByInput {
   id: OrderDirection
-  createdAt: OrderDirection
   title: OrderDirection
   companyName: OrderDirection
   location: OrderDirection
@@ -207,7 +204,6 @@ input JobOrderByInput {
 }
 
 input JobUpdateInput {
-  createdAt: DateTime
   title: String
   companyName: String
   location: String
@@ -221,12 +217,61 @@ input JobUpdateArgs {
 }
 
 input JobCreateInput {
-  createdAt: DateTime
   title: String
   companyName: String
   location: String
   url: String
   postedDate: DateTime
+}
+
+type ResumeTemplate {
+  id: ID!
+  createdAt: DateTime
+  name: String
+  description: String
+  path: String
+}
+
+input ResumeTemplateWhereUniqueInput {
+  id: ID
+}
+
+input ResumeTemplateWhereInput {
+  AND: [ResumeTemplateWhereInput!]
+  OR: [ResumeTemplateWhereInput!]
+  NOT: [ResumeTemplateWhereInput!]
+  id: IDFilter
+  createdAt: DateTimeFilter
+  name: StringFilter
+  description: StringFilter
+  path: StringFilter
+}
+
+input ResumeTemplateOrderByInput {
+  id: OrderDirection
+  createdAt: OrderDirection
+  name: OrderDirection
+  description: OrderDirection
+  path: OrderDirection
+}
+
+input ResumeTemplateUpdateInput {
+  createdAt: DateTime
+  name: String
+  description: String
+  path: String
+}
+
+input ResumeTemplateUpdateArgs {
+  where: ResumeTemplateWhereUniqueInput!
+  data: ResumeTemplateUpdateInput!
+}
+
+input ResumeTemplateCreateInput {
+  createdAt: DateTime
+  name: String
+  description: String
+  path: String
 }
 
 """
@@ -256,6 +301,17 @@ type Mutation {
   updateJobs(data: [JobUpdateArgs!]!): [Job]
   deleteJob(where: JobWhereUniqueInput!): Job
   deleteJobs(where: [JobWhereUniqueInput!]!): [Job]
+  createResumeTemplate(data: ResumeTemplateCreateInput!): ResumeTemplate
+  createResumeTemplates(data: [ResumeTemplateCreateInput!]!): [ResumeTemplate]
+  updateResumeTemplate(
+    where: ResumeTemplateWhereUniqueInput!
+    data: ResumeTemplateUpdateInput!
+  ): ResumeTemplate
+  updateResumeTemplates(data: [ResumeTemplateUpdateArgs!]!): [ResumeTemplate]
+  deleteResumeTemplate(where: ResumeTemplateWhereUniqueInput!): ResumeTemplate
+  deleteResumeTemplates(
+    where: [ResumeTemplateWhereUniqueInput!]!
+  ): [ResumeTemplate]
   endSession: Boolean!
   authenticateAdminWithPassword(
     email: String!
@@ -310,6 +366,14 @@ type Query {
   ): [Job!]
   job(where: JobWhereUniqueInput!): Job
   jobsCount(where: JobWhereInput! = {}): Int
+  resumeTemplates(
+    where: ResumeTemplateWhereInput! = {}
+    orderBy: [ResumeTemplateOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [ResumeTemplate!]
+  resumeTemplate(where: ResumeTemplateWhereUniqueInput!): ResumeTemplate
+  resumeTemplatesCount(where: ResumeTemplateWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }
