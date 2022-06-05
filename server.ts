@@ -10,6 +10,7 @@ import multer from 'multer';
 import { getJobs } from './routes/job';
 import { signup } from './routes/signup';
 import { signin } from './routes/signin';
+import { getResumeTemaplates } from './routes/resumeTemplates';
 const upload = multer();
 
 export const server: ServerConfig<BaseKeystoneTypeInfo> = {
@@ -44,6 +45,7 @@ export const server: ServerConfig<BaseKeystoneTypeInfo> = {
     app.post('/rest/signup', signup);
     app.post('/rest/signin', signin);
     app.get('/rest/jobs', getJobs);
+    app.get('/rest/resume-templates', getResumeTemaplates);
   },
   cors: {
     origin: ['http://localhost:3000', 'http://localhost:3001'],

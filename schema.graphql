@@ -228,8 +228,10 @@ type ResumeTemplate {
   id: ID!
   createdAt: DateTime
   name: String
+  type: String
   description: String
-  path: String
+  image: String
+  pdf: String
 }
 
 input ResumeTemplateWhereUniqueInput {
@@ -243,23 +245,29 @@ input ResumeTemplateWhereInput {
   id: IDFilter
   createdAt: DateTimeFilter
   name: StringFilter
+  type: StringFilter
   description: StringFilter
-  path: StringFilter
+  image: StringFilter
+  pdf: StringFilter
 }
 
 input ResumeTemplateOrderByInput {
   id: OrderDirection
   createdAt: OrderDirection
   name: OrderDirection
+  type: OrderDirection
   description: OrderDirection
-  path: OrderDirection
+  image: OrderDirection
+  pdf: OrderDirection
 }
 
 input ResumeTemplateUpdateInput {
   createdAt: DateTime
   name: String
+  type: String
   description: String
-  path: String
+  image: String
+  pdf: String
 }
 
 input ResumeTemplateUpdateArgs {
@@ -270,8 +278,65 @@ input ResumeTemplateUpdateArgs {
 input ResumeTemplateCreateInput {
   createdAt: DateTime
   name: String
+  type: String
   description: String
-  path: String
+  image: String
+  pdf: String
+}
+
+type HelpfulWebsite {
+  id: ID!
+  createdAt: DateTime
+  name: String
+  type: String
+  description: String
+  url: String
+}
+
+input HelpfulWebsiteWhereUniqueInput {
+  id: ID
+}
+
+input HelpfulWebsiteWhereInput {
+  AND: [HelpfulWebsiteWhereInput!]
+  OR: [HelpfulWebsiteWhereInput!]
+  NOT: [HelpfulWebsiteWhereInput!]
+  id: IDFilter
+  createdAt: DateTimeFilter
+  name: StringFilter
+  type: StringFilter
+  description: StringFilter
+  url: StringFilter
+}
+
+input HelpfulWebsiteOrderByInput {
+  id: OrderDirection
+  createdAt: OrderDirection
+  name: OrderDirection
+  type: OrderDirection
+  description: OrderDirection
+  url: OrderDirection
+}
+
+input HelpfulWebsiteUpdateInput {
+  createdAt: DateTime
+  name: String
+  type: String
+  description: String
+  url: String
+}
+
+input HelpfulWebsiteUpdateArgs {
+  where: HelpfulWebsiteWhereUniqueInput!
+  data: HelpfulWebsiteUpdateInput!
+}
+
+input HelpfulWebsiteCreateInput {
+  createdAt: DateTime
+  name: String
+  type: String
+  description: String
+  url: String
 }
 
 """
@@ -312,6 +377,17 @@ type Mutation {
   deleteResumeTemplates(
     where: [ResumeTemplateWhereUniqueInput!]!
   ): [ResumeTemplate]
+  createHelpfulWebsite(data: HelpfulWebsiteCreateInput!): HelpfulWebsite
+  createHelpfulWebsites(data: [HelpfulWebsiteCreateInput!]!): [HelpfulWebsite]
+  updateHelpfulWebsite(
+    where: HelpfulWebsiteWhereUniqueInput!
+    data: HelpfulWebsiteUpdateInput!
+  ): HelpfulWebsite
+  updateHelpfulWebsites(data: [HelpfulWebsiteUpdateArgs!]!): [HelpfulWebsite]
+  deleteHelpfulWebsite(where: HelpfulWebsiteWhereUniqueInput!): HelpfulWebsite
+  deleteHelpfulWebsites(
+    where: [HelpfulWebsiteWhereUniqueInput!]!
+  ): [HelpfulWebsite]
   endSession: Boolean!
   authenticateAdminWithPassword(
     email: String!
@@ -374,6 +450,14 @@ type Query {
   ): [ResumeTemplate!]
   resumeTemplate(where: ResumeTemplateWhereUniqueInput!): ResumeTemplate
   resumeTemplatesCount(where: ResumeTemplateWhereInput! = {}): Int
+  helpfulWebsites(
+    where: HelpfulWebsiteWhereInput! = {}
+    orderBy: [HelpfulWebsiteOrderByInput!]! = []
+    take: Int
+    skip: Int! = 0
+  ): [HelpfulWebsite!]
+  helpfulWebsite(where: HelpfulWebsiteWhereUniqueInput!): HelpfulWebsite
+  helpfulWebsitesCount(where: HelpfulWebsiteWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }

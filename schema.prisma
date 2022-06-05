@@ -40,6 +40,17 @@ model ResumeTemplate {
   id          String   @id @default(cuid())
   createdAt   DateTime @default(now())
   name        String   @default("")
+  type        String   @default("")
   description String   @default("")
-  path        String   @default("")
+  image       String   @default("")
+  pdf         String   @default("")
+}
+
+model HelpfulWebsite {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  name        String   @default("")
+  type        String   @default("")
+  description String   @default("")
+  url         String   @default("")
 }

@@ -1,7 +1,7 @@
 import { list } from '@keystone-6/core';
 import { text, timestamp } from '@keystone-6/core/fields';
 
-export const ResumeTemplate = list({
+export const HelpfulWebsite = list({
   fields: {
     createdAt: timestamp({
       validation: { isRequired: true },
@@ -12,7 +12,6 @@ export const ResumeTemplate = list({
     description: text({
       validation: { isRequired: true },
     }),
-    image: text({ validation: { isRequired: true } }),
-    pdf: text({ validation: { isRequired: true } }),
+    url: text({ validation: { isRequired: true } }),
   },
 });
