@@ -11,6 +11,7 @@ import { getJobs } from './routes/job';
 import { signup } from './routes/signup';
 import { signin } from './routes/signin';
 import { getResumeTemaplates } from './routes/resumeTemplates';
+import { getHelpfulWebsites } from './routes/helpfulWebsites';
 const upload = multer();
 
 export const server: ServerConfig<BaseKeystoneTypeInfo> = {
@@ -46,6 +47,7 @@ export const server: ServerConfig<BaseKeystoneTypeInfo> = {
     app.post('/rest/signin', signin);
     app.get('/rest/jobs', getJobs);
     app.get('/rest/resume-templates', getResumeTemaplates);
+    app.get('/rest/helpful-websites', getHelpfulWebsites);
   },
   cors: {
     origin: ['http://localhost:3000', 'http://localhost:3001'],
