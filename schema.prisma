@@ -37,20 +37,19 @@ model Job {
 }
 
 model ResumeTemplate {
-  id          String   @id @default(cuid())
-  createdAt   DateTime @default(now())
-  name        String   @default("")
-  type        String   @default("")
-  description String   @default("")
-  image       String   @default("")
-  pdf         String   @default("")
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  name      String   @default("")
+  type      String   @default("simple")
+  imagePath String   @default("")
+  pdfPath   String   @default("")
 }
 
 model HelpfulWebsite {
   id          String   @id @default(cuid())
   createdAt   DateTime @default(now())
   name        String   @default("")
-  type        String   @default("")
+  type        String   @default("online-courses")
   description String   @default("")
   url         String   @default("")
 }

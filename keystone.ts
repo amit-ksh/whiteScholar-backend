@@ -1,7 +1,5 @@
 /*
-Welcome to Keystone! This file is what keystone uses to start the app.
-
-It looks at the default export, and expects a Keystone config object.
+This file is what keystone uses to start the app.
 
 You can find all the config options in our docs here: https://keystonejs.com/docs/apis/config
 */
@@ -19,7 +17,6 @@ import { server } from './server';
 import 'dotenv/config';
 
 export default withAuth(
-  // Using the config function helps typescript guide you to the available options.
   config({
     // the db sets the database provider - we're using sqlite for the fastest startup experience
     db: {
@@ -28,7 +25,7 @@ export default withAuth(
     },
     // This config allows us to set up features of the Admin UI https://keystonejs.com/docs/apis/config#ui
     ui: {
-      // For our starter, we check that someone has session data before letting them see the Admin UI.
+      // Checking that someone has session data before letting them see the Admin UI.
       isAccessAllowed: (context) => !!context.session?.data,
     },
     server,

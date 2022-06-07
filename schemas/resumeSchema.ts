@@ -1,5 +1,5 @@
 import { list } from '@keystone-6/core';
-import { text, timestamp } from '@keystone-6/core/fields';
+import { select, text, timestamp } from '@keystone-6/core/fields';
 
 export const ResumeTemplate = list({
   fields: {
@@ -8,11 +8,12 @@ export const ResumeTemplate = list({
       defaultValue: { kind: 'now' },
     }),
     name: text({ validation: { isRequired: true } }),
-    type: text({ validation: { isRequired: true } }),
-    description: text({
+    type: select({
+      options: ['simple', 'professional', 'modern'],
+      defaultValue: 'simple',
       validation: { isRequired: true },
     }),
-    image: text({ validation: { isRequired: true } }),
-    pdf: text({ validation: { isRequired: true } }),
+    imagePath: text({ validation: { isRequired: true } }),
+    pdfPath: text({ validation: { isRequired: true } }),
   },
 });
