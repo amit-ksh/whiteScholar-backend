@@ -4,8 +4,9 @@ import type { KeystoneContext } from '@keystone-6/core/types';
 export async function getJobs(req: Request, res: Response) {
   const context = (req as any).context as KeystoneContext;
 
-  const jobs = await context.query.Job.findMany({
-    query: `
+  try {
+    const jobs = await context.query.Job.findMany({
+      query: `
       id
       title
       companyName
@@ -13,7 +14,11 @@ export async function getJobs(req: Request, res: Response) {
       url
       postedDate
     `,
-  });
+      orderBy: [{ postedDate: 'desc' }],
+    });
 
-  res.json(jobs);
+    res.json(jobs);
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 }

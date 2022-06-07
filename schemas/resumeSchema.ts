@@ -13,7 +13,7 @@ export const ResumeTemplate = list({
       defaultValue: 'simple',
       validation: { isRequired: true },
     }),
-    imagePath: text({ validation: { isRequired: true } }),
-    pdfPath: text({ validation: { isRequired: true } }),
+    imageUrl: text({ validation: { isRequired: true } }),
+    pdfUrl: text({ validation: { isRequired: true } }),
   },
 });

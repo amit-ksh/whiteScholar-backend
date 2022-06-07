@@ -5,15 +5,19 @@ export async function getHelpfulWebsites(req: Request, res: Response) {
   // This was added by the context middleware in ../keystone.ts
   const context = (req as any).context as KeystoneContext;
 
-  const helpfulWebsite = await context.query.HelpfulWebsite.findMany({
-    query: `
+  try {
+    const helpfulWebsite = await context.query.HelpfulWebsite.findMany({
+      query: `
       id
       name
       type
       description
       url
     `,
-  });
-  // And return the result as JSON
-  res.json(helpfulWebsite);
+    });
+    // And return the result as JSON
+    res.json(helpfulWebsite);
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 }
