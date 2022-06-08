@@ -229,8 +229,8 @@ type ResumeTemplate {
   createdAt: DateTime
   name: String
   type: String
-  imageUrl: String
-  pdfUrl: String
+  imagePath: String
+  filePath: String
 }
 
 input ResumeTemplateWhereUniqueInput {
@@ -245,8 +245,8 @@ input ResumeTemplateWhereInput {
   createdAt: DateTimeFilter
   name: StringFilter
   type: StringFilter
-  imageUrl: StringFilter
-  pdfUrl: StringFilter
+  imagePath: StringFilter
+  filePath: StringFilter
 }
 
 input ResumeTemplateOrderByInput {
@@ -254,16 +254,16 @@ input ResumeTemplateOrderByInput {
   createdAt: OrderDirection
   name: OrderDirection
   type: OrderDirection
-  imageUrl: OrderDirection
-  pdfUrl: OrderDirection
+  imagePath: OrderDirection
+  filePath: OrderDirection
 }
 
 input ResumeTemplateUpdateInput {
   createdAt: DateTime
   name: String
   type: String
-  imageUrl: String
-  pdfUrl: String
+  imagePath: String
+  filePath: String
 }
 
 input ResumeTemplateUpdateArgs {
@@ -275,8 +275,8 @@ input ResumeTemplateCreateInput {
   createdAt: DateTime
   name: String
   type: String
-  imageUrl: String
-  pdfUrl: String
+  imagePath: String
+  filePath: String
 }
 
 type HelpfulWebsite {

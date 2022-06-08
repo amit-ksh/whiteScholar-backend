@@ -10,8 +10,8 @@ export async function getResumeTemaplates(req: Request, res: Response) {
       id
       name
       type
-      imageUrl
-      pdfUrl
+      imagePath
+      filePath
     `,
     });
     res.json(resumeTemplate);

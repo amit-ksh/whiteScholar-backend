@@ -41,8 +41,8 @@ model ResumeTemplate {
   createdAt DateTime @default(now())
   name      String   @default("")
   type      String   @default("simple")
-  imageUrl  String   @default("")
-  pdfUrl    String   @default("")
+  imagePath String   @default("")
+  filePath  String   @default("")
 }
 
 model HelpfulWebsite {
