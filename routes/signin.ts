@@ -36,7 +36,7 @@ export async function signin(req: Request, res: Response) {
 
       if (matched) {
         const token = createNewToken({ ...user, password: null });
-        return res.status(201).json({ token });
+        return res.status(201).json({ token, name: user.name });
       } else {
         return res.status(401).json({
           error: 'Wrong credentials!',
