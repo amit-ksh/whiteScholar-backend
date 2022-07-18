@@ -1,5 +1,5 @@
 import { list } from '@keystone-6/core';
-import { text, password, timestamp } from '@keystone-6/core/fields';
+import { text, timestamp } from '@keystone-6/core/fields';
 
 export const User: any = list({
   // Here are the fields that `User` will have. We want an email and password so they can log in

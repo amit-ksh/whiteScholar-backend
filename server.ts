@@ -50,7 +50,7 @@ export const server: ServerConfig<BaseKeystoneTypeInfo> = {
     app.get('/rest/helpful-websites', getHelpfulWebsites);
   },
   cors: {
-    origin: ['http://localhost:3000', 'http://localhost:3001'],
+    origin: ['http://localhost:3000', 'http://localhost:3001', 'https://white-scholar.vercel.app'],
     credentials: true,
   },
 };
